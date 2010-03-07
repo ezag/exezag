@@ -1,0 +1,26 @@
+From 3126fb676b8afd970fb058f7fe0835bb2aaad5dc Mon Sep 17 00:00:00 2001
+From: Yury G. Kudryashov <urkud.urkud@gmail.com>
+Date: Sun, 7 Mar 2010 10:31:00 +0300
+Subject: [PATCH] Fix compilation with threads
+
+---
+ module.mk |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/module.mk b/module.mk
+index 93e2c8d..52f2160 100644
+--- a/module.mk
++++ b/module.mk
+@@ -39,7 +39,8 @@ pstoqpdl_LIBS		:= `cups-config --libs` -lcupsimage
+ ifneq ($(DISABLE_THREADS),0)
+ CXXFLAGS		+= -DDISABLE_THREADS
+ else
+-CXXFLAGS		+= -DTHREADS=$(THREADS) -DCACHESIZE=$(CACHESIZE)
++CXXFLAGS		+= -DTHREADS=$(THREADS) -DCACHESIZE=$(CACHESIZE) -pthread
++rastertoqpdl_LDFLAGS += -pthread
+ endif
+ ifneq ($(DISABLE_JBIG),0)
+ CXXFLAGS		+= -DDISABLE_JBIG
+-- 
+1.7.0.1
+
