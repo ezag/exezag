@@ -1,0 +1,15 @@
+# Copyright 2016 Eugen Zagorodniy
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=ierton ]
+require cmake [ api=2 ]
+
+SUMMARY="Program that allows to query and change the XKB layout state"
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~x86 ~amd64"
+
+DEPENDENDIES="
+    build+run:
+        x11-libs/libxkbfile
+"
