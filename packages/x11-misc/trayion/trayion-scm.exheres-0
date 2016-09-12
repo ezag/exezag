@@ -1,7 +1,6 @@
 # Copyright 2016 Eugen Zagorodniy
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PV=v${PV}
 require github [ user=laynor ]
 
 SUMMARY="Notification tray for notion WM"
@@ -14,13 +13,6 @@ DEPENDENDIES="
         x11-libs/libX11
 "
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    # Fix "client_messages.h: No such file or directory" build error
-    "${FILES}/8eadbe0e2fb45bc545be11831756955f34f02fe3.patch"
-    "${FILES}/2d2d46dafd5f55796fc7a17f38dd1ee2be051ebc.patch"
-    # Respect DESTDIR
-    "${FILES}/Makefile.patch"
-)
 src_prepare() {
     default
     edo sed -e "s/\(gcc\)/$(exhost --tool-prefix)\1/" -i trayion/Makefile
