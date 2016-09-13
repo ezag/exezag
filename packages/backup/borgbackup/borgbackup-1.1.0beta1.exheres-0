@@ -1,0 +1,23 @@
+# Copyright 2016 Eugen Zagorodniy
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="${PV/beta/b}"
+MY_PNV="${PN}-${MY_PV}"
+
+require pypi [ pnv=${MY_PNV} ]
+require setup-py [ blacklist="2 3.3" import=distfiles has_bin=true \
+                   work=${MY_PNV} ]
+
+SUMMARY="Deduplicating backup program with compression and encryption support"
+HOMEPAGE="http://${PN}.readthedocs.io/en/${MY_PV}/"
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~x86 ~amd64"
+
+DEPENDENCIES="
+    build+run:
+        app-arch/lz4
+        dev-python/msgpack-python[python_abis:*(-)?]
+        dev-python/setuptools_scm[python_abis:*(-)?][>=1.7]
+        sys-apps/acl
+"
