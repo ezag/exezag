@@ -9,7 +9,7 @@ LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~x86 ~amd64"
 
-DEPENDENDIES="
+DEPENDENCIES="
     build+run:
         x11-libs/libxkbfile
 "
