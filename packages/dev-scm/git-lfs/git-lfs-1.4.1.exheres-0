@@ -1,0 +1,31 @@
+# Copyright 2016 Eugen Zagorodniy
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="v${PV}"
+require github [ user=github ]
+
+SUMMARY="Extension for managing large files with Git"
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~x86 ~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-lang/go
+        sys-apps/ronn
+    build+run:
+        dev-scm/git[>=1.8.2]
+"
+
+src_compile() {
+    edo mkdir -p src/github.com/github
+    edo ln -s $(pwd) src/github.com/github/${PN}
+    edo export GOPATH=$(pwd)
+    edo go build github.com/github/${PN}
+    edo ronn -r docs/man/*.ronn
+}
+
+src_install() {
+    dobin ${PN}
+    doman docs/man/*.[1-8]
+}
