@@ -1,0 +1,52 @@
+# Copyright 2016 Eugen Zagorodniy
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Upwork Team app for collaboration and payment protection"
+LICENCES="Upwork"
+SLOT="0"
+PLATFORMS="~x86 ~amd64"
+
+SUFFIX="a7qf2qa9wn508n52"
+MY_PV="v${PV//./_}_$SUFFIX"
+
+MYOPTIONS="
+    platform:
+        x86
+        amd64
+"
+
+DOWNLOADS="
+    platform:amd64? (
+        http://updates.team.odesk.com/binaries/${MY_PV}/${PN}_amd64.deb
+    )
+    platform:x86? (
+        http://updates.team.odesk.com/binaries/${MY_PV}/${PN}_i386.deb
+    )
+"
+
+DEPENDENCIES="
+    dev-libs/libgcrypt
+    dev-libs/nss
+    sys-sound/alsa-lib
+    x11-dri/glu
+    x11-libs/gtk+:2
+    x11-libs/gtkglext
+"
+
+src_unpack() {
+    default
+    edo mkdir ${PNV}
+    edo tar -x -C ${PNV} -f data.tar.gz
+}
+
+src_install() {
+    dobin usr/bin/upwork
+    dodoc -r usr/share/doc/upwork
+    insinto /usr/share
+    doins -r usr/share/{applications,menu,pixmaps}
+    insinto /usr/share/upwork
+    doins usr/share/upwork/*.{bin,dat,pak,so}
+    doins -r usr/share/upwork/locales
+    exeinto /usr/share/upwork
+    doexe usr/share/upwork/{chrome-sandbox,upwork}
+}
