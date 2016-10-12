@@ -27,10 +27,13 @@ DOWNLOADS="
 DEPENDENCIES="
     dev-libs/libgcrypt
     dev-libs/nss
+    gnome-platform/GConf
     sys-sound/alsa-lib
     x11-dri/glu
     x11-libs/gtk+:2
     x11-libs/gtkglext
+    x11-libs/libXScrnSaver
+    x11-libs/libXtst
 "
 
 src_unpack() {
