@@ -6,8 +6,9 @@ LICENCES="Upwork"
 SLOT="0"
 PLATFORMS="~x86 ~amd64"
 
-SUFFIX="a7qf2qa9wn508n52"
-MY_PV="v${PV//./_}_$SUFFIX"
+SUFFIX="xgmle488qryoawe"
+MY_PV="v${PV//./_}$SUFFIX"
+URL_BASE="https://updates-desktopapp.upwork.com/binaries/"
 
 MYOPTIONS="
     platform:
@@ -17,10 +18,10 @@ MYOPTIONS="
 
 DOWNLOADS="
     platform:amd64? (
-        http://updates.team.odesk.com/binaries/${MY_PV}/${PN}_amd64.deb
+        ${URL_BASE}${MY_PV}/${PN}_amd64.deb -> ${PNV}_amd64.deb
     )
     platform:x86? (
-        http://updates.team.odesk.com/binaries/${MY_PV}/${PN}_i386.deb
+        ${URL_BASE}${MY_PV}/${PN}_i386.deb -> ${PNV}_x86.deb
     )
 "
 
