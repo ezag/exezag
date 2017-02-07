@@ -1,0 +1,13 @@
+# Copyright 2017 Eugen Zagorodniy
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="GNUstep Makefile Package"
+LICENCES="LGPL"
+SLOT="0"
+PLATFORMS="~x86 ~amd64"
+DOWNLOADS="ftp://ftp.gnustep.org/pub/gnustep/core/${PNV}.tar.gz"
+
+src_install() {
+    default
+    edo rmdir ${IMAGE}/usr/$(exhost --target)/share/GNUstep/Makefiles/{x86_64,Additional,Auxiliary}
+}
