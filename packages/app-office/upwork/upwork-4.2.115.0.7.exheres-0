@@ -1,4 +1,4 @@
-# Copyright 2016 Eugen Zagorodniy
+# Copyright 2016-2017 Eugen Zagorodniy
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Upwork Team app for collaboration and payment protection"
@@ -6,7 +6,7 @@ LICENCES="Upwork"
 SLOT="0"
 PLATFORMS="~x86 ~amd64"
 
-SUFFIX="xgmle488qryoawe"
+SUFFIX="n66kq4suk1ud047"
 MY_PV="v${PV//./_}$SUFFIX"
 URL_BASE="https://updates-desktopapp.upwork.com/binaries/"
 
